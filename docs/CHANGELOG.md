@@ -2,7 +2,7 @@
 
 ## v1.0.2
 
-- Removed the outdated RustBridge/DataCenterModLoader dependency
+- Removed the outdated external configuration-menu dependency
 - Migrated configuration to native MelonPreferences
 - Updated the project to use local current-game references
 
