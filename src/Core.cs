@@ -22,15 +22,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-using DataCenterModLoader;
 using HarmonyLib;
 using Il2Cpp;
 using MelonLoader;
 using GregModNoCostShop.Enums;
 using GregModNoCostShop.Options;
 
-[assembly: MelonInfo(typeof(GregModNoCostShop.Core), "gregMod.NoCostShop", "1.0.1", "TeamGreg Modding (Neox / mleem97)", "https://github.com/mleem97/gregMod.NoCostShop")]
-[assembly: MelonAdditionalDependencies("DataCenterModLoader")]
+[assembly: MelonInfo(typeof(GregModNoCostShop.Core), "gregMod.NoCostShop", "1.0.2", "TeamGreg Modding (Neox / mleem97)", "https://github.com/mleem97/gregMod.NoCostShop")]
 [assembly: MelonGame("Waseku", "Data Center")]
 
 namespace GregModNoCostShop
@@ -45,7 +43,7 @@ namespace GregModNoCostShop
         
         private const string Author = "TeamGreg Modding (Neox / mleem97)";
         
-        private const string Version = "1.0.1";
+        private const string Version = "1.0.2";
 
         /// <summary>
         /// Internal replacement XP value used when XP costs are disabled.
@@ -125,7 +123,6 @@ namespace GregModNoCostShop
         /// </summary>
         public override void OnInitializeMelon()
         {
-            ModConfigSystem.SetModInfo(ModName, Author, Version);
             OptionsManager.Instance.InitializeOptions();
 
             _lastDisableXpCost = !OptionsManager.Instance.GetConfigOptionValue<bool>(OptionType.DisableXpCost);

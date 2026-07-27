@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-using DataCenterModLoader;
+using MelonLoader;
 using GregModNoCostShop.Enums;
 
 namespace GregModNoCostShop.Options
@@ -41,6 +41,9 @@ namespace GregModNoCostShop.Options
         /// Stores registered configuration options keyed by their enum identifier.
         /// </summary>
         private static Dictionary<OptionType, ConfigOption> _optionsDict = new();
+        private static MelonPreferences_Category _preferences;
+        private static MelonPreferences_Entry<bool> _disableXpCost;
+        private static MelonPreferences_Entry<bool> _disableCoinCost;
 
         /// <summary>
         /// Gets the shared options manager instance.
@@ -70,7 +73,7 @@ namespace GregModNoCostShop.Options
         }
 
         /// <summary>
-        /// Reads the current value of a registered option from the external mod configuration system.
+        /// Reads the current value from native MelonPreferences.
         /// </summary>
         /// <typeparam name="T">Expected value type for the option.</typeparam>
         /// <param name="optionType">The option whose value should be read.</param>
@@ -82,18 +85,11 @@ namespace GregModNoCostShop.Options
             if (option == null)
                 return default(T);
 
-            // The config API exposes separate getters for each primitive type the mod supports.
-            switch (typeof(T))
-            {
-                case Type t when t == typeof(bool):
-                    return (T)(object)ModConfigSystem.GetBoolValue(Core.ModName, optionType.ToString());
-                case Type t when t == typeof(int):
-                    return (T)(object)ModConfigSystem.GetIntValue(Core.ModName, optionType.ToString());
-                case Type t when t == typeof(float):
-                    return (T)(object)ModConfigSystem.GetFloatValue(Core.ModName, optionType.ToString());
-                default:
-                    return default(T);
-            }
+            if (typeof(T) != typeof(bool)) return default(T);
+            var value = optionType == OptionType.DisableXpCost
+                ? _disableXpCost?.Value ?? false
+                : _disableCoinCost?.Value ?? false;
+            return (T)(object)value;
         }
 
         /// <summary>
@@ -133,7 +129,13 @@ namespace GregModNoCostShop.Options
             if (Initialized)
                 return;
 
-            // Register each supported option once during startup so it becomes available in the config UI.
+            _preferences = MelonPreferences.CreateCategory("gregMod_NoCostShop", "gregMod.NoCostShop");
+            _disableXpCost = _preferences.CreateEntry(
+                nameof(OptionType.DisableXpCost), true, "Disable XP Cost");
+            _disableCoinCost = _preferences.CreateEntry(
+                nameof(OptionType.DisableCoinCost), true, "Disable Coin Cost");
+
+            // Keep local metadata for the in-game documentation and future UI.
             new ConfigOption<bool>
             (
                 key: nameof(OptionType.DisableXpCost),

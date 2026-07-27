@@ -22,8 +22,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-using DataCenterModLoader;
-
 namespace GregModNoCostShop.Options
 {
     /// <summary>
@@ -89,25 +87,7 @@ namespace GregModNoCostShop.Options
             if (!OptionsManager.Instance.AddConfigOption(this))
                 return;
 
-            // The external config API is type-specific, so map the generic option to the matching registration call.
-            switch (typeof(T))
-            {
-                case Type t when t == typeof(bool):
-                {
-                    ModConfigSystem.RegisterBoolOption(Core.ModName, key, displayName, (bool)DefaultValue, description);
-                    break;
-                }
-                case Type t when t == typeof(int):
-                {
-                    ModConfigSystem.RegisterIntOption(Core.ModName, key, displayName, (int)DefaultValue, int.MinValue, int.MaxValue, description);
-                    break;
-                }
-                case Type t when t == typeof(float):
-                {
-                    ModConfigSystem.RegisterFloatOption(Core.ModName, key, displayName, (float)DefaultValue, float.MinValue, float.MaxValue, description);
-                    break;
-                }
-            }
+            // Values are registered by OptionsManager through MelonPreferences.
         }
     }
 }

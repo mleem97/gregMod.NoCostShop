@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.2
+
+- Removed the outdated RustBridge/DataCenterModLoader dependency
+- Migrated configuration to native MelonPreferences
+- Updated the project to use local current-game references
+
 ## v1.0.1
 
 - Rebranded the plugin as `gregMod.NoCostShop`

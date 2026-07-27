@@ -4,7 +4,8 @@
 
 [![Discord](https://img.shields.io/badge/Discord-Join-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/greg)
 [![gregFramework](https://img.shields.io/badge/gregFramework-Website-blue?style=for-the-badge)](https://gregframework.eu)
-[![Version](https://img.shields.io/badge/Version-1.0.1-orange?style=for-the-badge)]()
+[![License](https://img.shields.io/badge/License-Apache%202.0-green?style=for-the-badge)](./LICENSE)
+[![Version](https://img.shields.io/badge/Version-1.0.2-orange?style=for-the-badge)]()
 [![GameVersion](https://img.shields.io/badge/Game%20Version-1.1.0-yellow?style=for-the-badge)]()
 [![Unity](https://img.shields.io/badge/Unity-6000.4.12f1-black?style=for-the-badge&logo=unity&logoColor=white)]()
 
@@ -14,13 +15,13 @@
 - **Discord / Support:** [discord.gg/greg](https://discord.gg/greg)
 - **Website:** [gregframework.eu](https://gregframework.eu)
 
-It removes both XP and coin costs from purchases while keeping the checkout system fully functional through a compatibility workaround.
+## Overview
 
-The mod integrates with the in-game modular menu system via [DataCenter-RustBridge](https://github.com/Joniii11/DataCenter-RustBridge) for easy configuration.
+**gregMod.NoCostShop** removes both XP and coin costs from purchases while keeping the checkout system fully functional through a compatibility workaround. Configuration uses MelonLoader's native preferences and has no external menu dependency.
 
 ---
 
-## ✨ Features
+## Features
 
 - Disable XP unlock costs
 - Disable coin prices
@@ -33,21 +34,19 @@ The mod integrates with the in-game modular menu system via [DataCenter-RustBrid
 
 ---
 
-## 📦 Requirements
+## Dependencies
 
 Before installing, make sure you have:
 
 - **[MelonLoader (latest version)](https://melonwiki.xyz/#/)**
-- **[DataCenter-RustBridge](https://github.com/Joniii11/DataCenter-RustBridge)**
 
 ---
 
-## 📥 Installation
+## Installation
 
 1. Install **MelonLoader** into *Data Center*
-2. Install **DataCenterModLoader**
-3. Download the latest release of **NoCostShop**
-4. Place `gregMod.NoCostShop.dll` into your `Mods` folder:
+2. Download the latest release of **gregMod.NoCostShop**
+3. Place `gregMod.NoCostShop.dll` into your `Mods` folder:
 
 ```
 GameFolder/
@@ -55,11 +54,11 @@ GameFolder/
     └── gregMod.NoCostShop.dll
 ```
 
-5. Launch the game
+4. Launch the game
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 All settings are available in-game through the modular menu.
 
@@ -73,7 +72,7 @@ All settings are available in-game through the modular menu.
 
 ---
 
-## 🧠 How It Works
+## How It Works
 
 - The mod hooks into shop and player systems at runtime
 - It tracks original item values (XP + coins)
@@ -93,7 +92,7 @@ This is required because the game **cannot process orders with a coin price of `
 
 ---
 
-## 🎯 Scope
+## Scope
 
 This is a **shop-focused quality-of-life mod**.
 
@@ -104,7 +103,7 @@ It does **not**:
 
 ---
 
-## ⚠️ Notes
+## Notes
 
 - Designed for convenience and sandbox-style gameplay
 - Keeps purchase flow intact while making items free
@@ -112,11 +111,17 @@ It does **not**:
 
 ---
 
-## 🛠️ Development
+## Build from Source
 
 - Mod Loader: [MelonLoader](https://melonwiki.xyz/#/)
 - Framework: .NET 6  
 - Language: C#  
+
+```bash
+dotnet build -c Release
+```
+
+Release output: `bin/Release/net6.0/gregMod.NoCostShop.dll`
 
 ## Project Structure
 
@@ -127,7 +132,7 @@ gregMod.NoCostShop/
 │   ├── ItemData.cs
 │   ├── Enums/
 │   └── Options/
-├── references/               # Game, MelonLoader, and RustBridge assemblies
+├── references/               # Current game and MelonLoader assemblies
 ├── docs/
 ├── gregMod.NoCostShop.csproj
 ├── README.md
@@ -136,6 +141,16 @@ gregMod.NoCostShop/
 
 ---
 
-## 📜 License
+## Credits
 
-MIT License © 2026 Neox; gregMod integration by TeamGreg Modding
+- **Original implementation:** Neox
+- **gregMod integration:** [TeamGreg Modding](https://github.com/teamGregModding)
+
+## License
+
+This project is distributed under the **Apache License 2.0**. See [`LICENSE`](./LICENSE).
+The original MIT notice is preserved in [`docs/ORIGINAL_LICENSE_MIT.txt`](./docs/ORIGINAL_LICENSE_MIT.txt).
+
+## 🚀 Join the gregFramework Team!
+
+Contributions, testing, documentation, and feedback are welcome in the [greg Discord](https://discord.gg/greg).
