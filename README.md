@@ -1,160 +1,89 @@
 # gregMod.NoCostShop
 
-> Makes the in-game shop effectively free while preserving the checkout flow.
+> gregMod.NoCostShop** removes both XP and coin costs from purchases while keeping the checkout system fully functional through a compatibility workaround. Config
 
-[![Discord](https://img.shields.io/discord/1392073682133848075?style=for-the-badge&logo=discord&logoColor=white&label=Discord)](https://discord.gg/greg)
-[![gregFramework](https://img.shields.io/badge/gregFramework-Website-blue?style=for-the-badge)](https://gregframework.eu)
-[![License](https://img.shields.io/badge/License-Apache%202.0-green?style=for-the-badge)](./LICENSE)
-[![Version](https://img.shields.io/badge/Version-1.0.2-orange?style=for-the-badge)]()
-[![GameVersion](https://img.shields.io/badge/Game%20Version-1.1.0-yellow?style=for-the-badge)]()
-[![Unity](https://img.shields.io/badge/Unity-6000.4.12f1-black?style=for-the-badge&logo=unity&logoColor=white)]()
+![License](https://img.shields.io/github/license/mleem97/gregMod.NoCostShop?style=for-the-badge) ![Last commit](https://img.shields.io/github/last-commit/mleem97/gregMod.NoCostShop?style=for-the-badge) ![Repo size](https://img.shields.io/github/repo-size/mleem97/gregMod.NoCostShop?style=for-the-badge) ![Stars](https://img.shields.io/github/stars/mleem97/gregMod.NoCostShop?style=for-the-badge)
 
 ## Links
 
-- **Repository:** [github.com/mleem97/gregMod.NoCostShop](https://github.com/mleem97/gregMod.NoCostShop)
-- **Discord / Support:** [discord.gg/greg](https://discord.gg/greg)
-- **Website:** [gregframework.eu](https://gregframework.eu)
+- **Repository:** [https://github.com/mleem97/gregMod.NoCostShop](https://github.com/mleem97/gregMod.NoCostShop)
+- **Issues:** [https://github.com/mleem97/gregMod.NoCostShop/issues](https://github.com/mleem97/gregMod.NoCostShop/issues)
+- **Releases:** [https://github.com/mleem97/gregMod.NoCostShop/releases](https://github.com/mleem97/gregMod.NoCostShop/releases)
 
 ## Overview
 
-**gregMod.NoCostShop** removes both XP and coin costs from purchases while keeping the checkout system fully functional through a compatibility workaround. Configuration uses MelonLoader's native preferences and has no external menu dependency.
+**gregMod.NoCostShop** — gregMod.NoCostShop** removes both XP and coin costs from purchases while keeping the checkout system fully functional through a compatibility workaround. Config
 
----
+Siehe [docs/INDEX.md](docs/INDEX.md) für die komplette Dokumentation.
+
+## Compatibility
+
+| Plattform | Status |
+|---|---|
+| Windows x64 | Supported |
+| Linux x64 | Supported |
 
 ## Features
 
-- Disable XP unlock costs
-- Disable coin prices
-- Shop items appear to cost `0`
-- Cart items and total display `0`
-- Prevents XP and coin deductions
-- Restores original values when disabled
-- Real-time behavior (applies continuously)
-- In-game configuration menu
-
----
-
-## Dependencies
-
-Before installing, make sure you have:
-
-- **[MelonLoader (latest version)](https://melonwiki.xyz/#/)**
-
----
+- Siehe [docs/INDEX.md](docs/INDEX.md) und [QUICKSTART.md](QUICKSTART.md)
 
 ## Installation
 
-1. Install **MelonLoader** into *Data Center*
-2. Download the latest release of **gregMod.NoCostShop**
-3. Place `gregMod.NoCostShop.dll` into your `Mods` folder:
-
-```
-GameFolder/
-└── Mods/
-    └── gregMod.NoCostShop.dll
-```
-
-4. Launch the game
-
----
-
-## Configuration
-
-All settings are available in-game through the modular menu.
-
-### Available Options
-
-- **DisableXpCost** *(default: true)*  
-  Removes XP requirements for all shop purchases.
-
-- **DisableCoinCost** *(default: true)*  
-  Removes coin prices from all shop purchases.
-
----
-
-## How It Works
-
-- The mod hooks into shop and player systems at runtime
-- It tracks original item values (XP + coins)
-- It replaces costs internally while preserving game logic
-- It overrides UI text to display `0` everywhere
-
-### Important Detail
-
-The mod **does not set prices to true zero internally**.
-
-Instead:
-- XP unlock cost → `0` - The game can tolerate XP being 0 on the backend. `1` will lock a fresh save out of all items.
-- Coin price internal value → `1`
-- Coin price displayed value → `0`
-
-This is required because the game **cannot process orders with a coin price of `0`**, and setting it directly would break checkout.
-
----
-
-## Scope
-
-This is a **shop-focused quality-of-life mod**.
-
-It does **not**:
-- Modify unrelated gameplay systems
-- Rebalance the entire economy
-- Permanently edit save data
-
----
-
-## Notes
-
-- Designed for convenience and sandbox-style gameplay
-- Keeps purchase flow intact while making items free
-- Uses runtime patches rather than invasive changes
-
----
+Siehe [QUICKSTART.md](QUICKSTART.md).
 
 ## Build from Source
 
-- Mod Loader: [MelonLoader](https://melonwiki.xyz/#/)
-- Framework: .NET 6  
-- Language: C#  
-
 ```bash
-dotnet build -c Release
+git clone git@github.com:mleem97/gregMod.NoCostShop.git
+cd gregMod.NoCostShop
 ```
 
-Release output: `bin/Release/net6.0/gregMod.NoCostShop.dll`
+Details: [QUICKSTART.md](QUICKSTART.md), [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Project Structure
+## Repository Layout
 
-```text
-gregMod.NoCostShop/
-├── src/                      # Mod source code
-│   ├── Core.cs
-│   ├── ItemData.cs
-│   ├── Enums/
-│   └── Options/
-├── references/               # Current game and MelonLoader assemblies
-├── docs/
-├── gregMod.NoCostShop.csproj
-├── README.md
-└── LICENSE
+```
+├── README.md            # Diese Datei
+├── QUICKSTART.md        # Schnellstart
+├── CHANGELOG.md         # Changelog (Keep a Changelog)
+├── CONTRIBUTING.md      # Mitmachen
+├── SECURITY.md          # Sicherheitsmeldungen
+├── CODE_OF_CONDUCT.md   # Verhaltenskodex
+├── AGENTS.md            # Hinweise für KI-Agenten
+├── LICENSE              # Apache-2.0
+├── VERSION              # Single Source of Truth für die Version
+├── docs/                # Dokumentation ([Index](docs/INDEX.md))
+├── scripts/             # Build-/Hilfsskripte
+├── tests/               # Tests
+├── references/          # Referenzen
+├── sponsors/            # Sponsoren
+└── examples/            # Beispiele
 ```
 
----
+## API Documentation
+
+Siehe [`docs/INDEX.md`](docs/INDEX.md).
 
 ## Credits
 
-- **Original implementation:** Neox
-- **gregMod integration:** [TeamGreg Modding](https://github.com/teamGregModding)
+| Rolle | Contributor |
+|---|---|
+| **Codebase** | [mleem97](https://github.com/mleem97) |
+
+## Contributing
+
+Siehe [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
-This project is distributed under the **Apache License 2.0**. See [`LICENSE`](./LICENSE).
-The original MIT notice is preserved in [`docs/ORIGINAL_LICENSE_MIT.txt`](./docs/ORIGINAL_LICENSE_MIT.txt).
+Apache-2.0 — siehe [`LICENSE`](LICENSE).
 
 ## 🚀 Join the gregFramework Team!
 
-### macOS Support
+Baust du gerne Mods, Tools oder Docs? Melde dich: **apply@gregframework.eu** oder via
+[Discord](https://discord.gg/greg) — Code, Assets, Docs, Testing, Infra, Community.
 
-A native macOS version of Data Center already exists. At the moment, however, there is no implementation path available for macOS support in this mod, and I do not have access to an Apple device for development or testing. I am actively looking for contributors who can help make macOS support possible. See “Join the gregFramework Team” below.
+---
 
-Contributions, testing, documentation, and feedback are welcome in the [greg Discord](https://discord.gg/greg).
+**gregFramework — powered by the community.**
+
