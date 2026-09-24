@@ -28,7 +28,7 @@ using MelonLoader;
 using GregModNoCostShop.Enums;
 using GregModNoCostShop.Options;
 
-[assembly: MelonInfo(typeof(GregModNoCostShop.Core), "gregMod.NoCostShop", "1.0.2", "TeamGreg Modding (Neox / mleem97)", "https://github.com/mleem97/gregMod.NoCostShop")]
+[assembly: MelonInfo(typeof(GregModNoCostShop.Core), "gregMod.NoCostShop", "1.0.3", "TeamGreg Modding (Neox / mleem97)", "https://github.com/mleem97/gregMod.NoCostShop")]
 [assembly: MelonGame("Waseku", "Data Center")]
 
 namespace GregModNoCostShop
@@ -43,7 +43,7 @@ namespace GregModNoCostShop
         
         private const string Author = "TeamGreg Modding (Neox / mleem97)";
         
-        private const string Version = "1.0.2";
+        private const string Version = "1.0.3";
 
         /// <summary>
         /// Internal replacement XP value used when XP costs are disabled.
