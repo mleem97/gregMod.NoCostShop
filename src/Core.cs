@@ -27,6 +27,7 @@ using Il2Cpp;
 using MelonLoader;
 using GregModNoCostShop.Enums;
 using GregModNoCostShop.Options;
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("ModCoverage.Tests")]
 
 [assembly: MelonInfo(typeof(GregModNoCostShop.Core), "gregMod.NoCostShop", "1.0.3", "TeamGreg Modding (Neox / mleem97)", "https://github.com/mleem97/gregMod.NoCostShop")]
 [assembly: MelonGame("Waseku", "Data Center")]
